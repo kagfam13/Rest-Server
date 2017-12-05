@@ -1,0 +1,40 @@
+{
+  "name": "rest-server",
+  "version": "1.0.0",
+  "description": "REST-Server with Node.js/express/Typescript, LA1 G1 5AHME",
+  "main": "dist/main.js",
+  "repository": {},
+  "scripts": {
+    "clean": "./node_modules/gulp/bin/gulp.js clean",
+    "build": "./node_modules/gulp/bin/gulp.js build",
+    "prestart": "./node_modules/gulp/bin/gulp.js cleanAndBuild",
+    "start": "node dist/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "??",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0",
+    "sprintf": "^0.1.5",
+    "sprintf-js": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.16.8",
+    "@types/express": "^4.0.39",
+    "@types/morgan": "^1.7.35",
+    "@types/node": "^8.0.54",
+    "@types/sprintf-js": "^1.1.0",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^3.1.1",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-typescript": "^3.2.3",
+    "gulp-using": "^0.1.1",
+    "merge-stream": "^1.0.1",
+    "run-sequence": "^2.2.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2"
+  }
+}
