@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import * as morgan from 'morgan';
+import { DbMongoUser } from './db-mongo-user';
 
 export class Server {
     private static _instance: Server;
@@ -48,16 +49,15 @@ export class Server {
     }
 
     private handleGet(req: express.Request, res: express.Response, next: express.NextFunction) {
-        if(!req.query || !req.query.htlid) {
+        if (!req.query || !req.query.htlid) {
             res.status(404).end();
             return;
         }
-        switch (req.query.htlid) {
-            case 'kormam13':
-                res.json({firstname: 'Marian', surname: 'Korosec'});
-                return;
-            default:
-                res.status(404).end();
+        const user = DbMongoUser.Instance.getUser(req.query.htlid);
+        if (user) {
+            res.json(user.toObject());
+        } else {
+            res.status(404).send('Error');
         }
     }
 }

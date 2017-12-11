@@ -37,9 +37,6 @@ export class User implements IUser {
                 }
                 this._class = data.class;
             }
-            if (!data.htlid || typeof data.htlid !== 'string') {
-                throw new Error('invalid/missing surname');
-            }
 
             if (data.birthday !== undefined) {
                 const millis = data.birthday instanceof Date ?
@@ -58,6 +55,18 @@ export class User implements IUser {
             console.log('invalid IUser');
         }
     }
+
+    public toObject(): IUser {
+        const rv: IUser = {
+            htlid: this._htlid,
+            surname: this._surname,
+            firstname: this._firstname
+        }
+        if (this._birthday) { rv.birthday = this._birthday; }
+        if (this._class) { rv.class = this._class; }
+        return rv;
+    }
+
 
     public get htlid (): string {
         return this._htlid;
