@@ -42,20 +42,17 @@ export class User implements IUser {
             }
 
             if (data.birthday !== undefined) {
-                43                 const millis = data.birthday instanceof Date ?
-                44                                data.birthday.getTime() :
-                45                                data.birthday;
-                46                 if (isNaN(millis)) { 
-                47                     throw new Error('illegal birthdate');
-                48                 }
-                49                 this._birthdate = new Date(millis);
-                50             }
-                51             if (Object.keys(this).length !== Object.keys(data).length) {
-                52                 throw new Error('invalid attributes');
-                53             }
-
-
-            
+                const millis = data.birthday instanceof Date ?
+                               data.birthday.getTime() :
+                               data.birthday;
+                if (isNaN(millis)) {
+                    throw new Error('illegal birthday');
+                }
+                this._birthday = new Date(millis);
+            }
+            if (Object.keys(this).length !== Object.keys(data).length) {
+                throw new Error('invalid attributes');
+            }
         } catch (err) {
             console.log(err);
             console.log('invalid IUser');
